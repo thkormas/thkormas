@@ -1,0 +1,31 @@
+#!/bin/bash
+#
+# /etc/rc.d/rc.local:  Local system initialization script.
+#
+# Put any local startup commands in here.  Also, if you have
+# anything that needs to be run at shutdown time you can
+# make an /etc/rc.d/rc.local_shutdown script and put those
+# commands in there.
+# Start avahidaemon
+if [ -x /etc/rc.d/rc.avahidaemon ]; then
+ /etc/rc.d/rc.avahidaemon start
+fi
+# Start avahidnsconfd
+if [ -x /etc/rc.d/rc.avahidnsconfd ]; then
+  /etc/rc.d/rc.avahidnsconfd start
+fi
+# Start vboxdrv
+#	if [ -x /etc/rc.d/rc.vboxdrv ]; then
+#	 /etc/rc.d/rc.vboxdrv start
+#	fi
+# start libvirt
+if [ -x /etc/rc.d/rc.libvirt ]; then
+    /etc/rc.d/rc.libvirt start
+fi 
+if [ -x /etc/rc.d/rc.webmin ]; then
+    /etc/rc.d/rc.webmin start
+  fi
+  # Start docker
+if [ -x /etc/rc.d/rc.docker ]; then
+  /etc/rc.d/rc.docker start
+fi

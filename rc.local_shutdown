@@ -1,0 +1,20 @@
+#!/bin/bash
+#
+
+
+# Stop avahidnsconfd
+if [ -x /etc/rc.d/rc.avahidnsconfd ]; then
+  /etc/rc.d/rc.avahidnsconfd stop
+fi
+# Stop avahidaemon
+if [ -x /etc/rc.d/rc.avahidaemon ]; then
+  /etc/rc.d/rc.avahidaemon stop
+fi
+ # Stop vboxdrv
+	if [ -x /etc/rc.d/rc.vboxdrv ]; then
+	 /etc/rc.d/rc.vboxdrv stop
+	fi
+	# Stop docker
+if [ -x /etc/rc.d/rc.docker ]; then
+  /etc/rc.d/rc.docker stop
+fi

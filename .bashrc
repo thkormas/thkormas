@@ -1,124 +1,36 @@
-# Enable the subsequent settings only in interactive sessions
-case $- in
-  *i*) ;;
-    *) return;;
-esac
-
-# Path to your oh-my-bash installation.
-export OSH=/home/tkor/.oh-my-bash
-
-# Set name of the theme to load. Optionally, if you set this to "random"
-# it'll load a random theme each time that oh-my-bash is loaded.
-OSH_THEME="font"
-
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
-
-# Uncomment the following line to use hyphen-insensitive completion. Case
-# sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
-
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
-
-# Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_OSH_DAYS=13
-
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
-
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
-
-# Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# HIST_STAMPS="mm/dd/yyyy"
-
-# Would you like to use another custom folder than $OSH/custom?
-# OSH_CUSTOM=/path/to/new-custom-folder
-
-# To disable the uses of "sudo" by oh-my-bash, please set "false" to
-# this variable.  The default behavior for the empty value is "true".
-OMB_USE_SUDO=true
-
-# Which completions would you like to load? (completions can be found in ~/.oh-my-bash/completions/*)
-# Custom completions may be added to ~/.oh-my-bash/custom/completions/
-# Example format: completions=(ssh git bundler gem pip pip3)
-# Add wisely, as too many completions slow down shell startup.
-completions=(
-  git
-  composer
-  ssh
-)
-
-# Which aliases would you like to load? (aliases can be found in ~/.oh-my-bash/aliases/*)
-# Custom aliases may be added to ~/.oh-my-bash/custom/aliases/
-# Example format: aliases=(vagrant composer git-avh)
-# Add wisely, as too many aliases slow down shell startup.
-aliases=(
-  general
-)
-
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-bash/plugins/*)
-# Custom plugins may be added to ~/.oh-my-bash/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(
-  git
-  bashmarks
-)
-
-# Which plugins would you like to conditionally load? (plugins can be found in ~/.oh-my-bash/plugins/*)
-# Custom plugins may be added to ~/.oh-my-bash/custom/plugins/
-# Example format: 
-#  if [ "$DISPLAY" ] || [ "$SSH" ]; then
-#      plugins+=(tmux-autoattach)
-#  fi
-
-source "$OSH"/oh-my-bash.sh
-
-# User configuration
-# export MANPATH="/usr/local/man:$MANPATH"
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# ssh
-# export SSH_KEY_PATH="~/.ssh/rsa_id"
-
-# Set personal aliases, overriding those provided by oh-my-bash libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-bash
-# users are encouraged to define aliases within the OSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
 #
-# Example aliases
-# alias bashconfig="mate ~/.bashrc"
-# alias ohmybash="mate ~/.oh-my-bash"
- [[ $- != *i* ]] && return
- shopt -s autocd
- alias ip='ip -c'
+# ~/.bashrc
+#
+
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+shopt -s autocd
+# Defining foreground variables
+P_BLACK="\[$(tput setaf 0)\]"
+P_RED="\[$(tput setaf 1)\]"
+P_GREEN="\[$(tput setaf 2)\]"
+P_YELLOW="\[$(tput setaf 3)\]"
+P_BLUE="\[$(tput setaf 4)\]"
+P_MAGENTA="\[$(tput setaf 5)\]"
+P_CYAN="\[$(tput setaf 6)\]"
+P_WHITE="\[$(tput setaf 7)\]"
+P_RESET="\[$(tput sgr0)\]"
+alias ls='ls --color=auto'
+alias ll='ls -lah'
+alias grh='history|grep'
+alias grep='grep --color=auto'
+alias mkdir='mkdir -pv'
+alias diff='colordiff'
+alias svim='sudo vim'
+export PATH="$HOME/bin:$PATH"
+export HISTSIZ=3000
+export HISTFILESIZE=4000
+export HISTCONTROL=erasedups:ignoredups:ignorespace
+export HISTCONTROL=ignoreboth:erasedups
+export EDITOR=vim
+export VISUAL=vim
+export PATH="$HOME/bin:$PATH"
+alias ip='ip -c'
  #alias df='su -m'
  alias slackpkg='sudo slackpkg'
  alias sbopkg='sudo sbopkg'
@@ -140,21 +52,19 @@ source "$OSH"/oh-my-bash.sh
  alias diff='colordiff'
  alias svim='sudo vim'
 # alias vpm='sudo vpm'
- export PATH="$HOME/bin:$PATH"
- export HISTSIZ=3000
- export HISTFILESIZE=4000
- #export HISTCONTROL=erasedups:ignoredups:ignorespace
- export HISTCONTROL=ignoreboth:erasedups
- export EDITOR=vim
-export PATH="$HOME/.emacs.d/bin:$PATH"
-
+ export PATH="$HOME/.emacs.d/bin:$PATH"
  export PATH="$HOME/bin:$PATH"
  export PATH="$HOME/.local/bin:$PATH"
- export PATH="$HOME/.cargo:$PATH"
- export PS1="\[\e[32m\][\[\e[m\]\[\e[31m\]\u\[\e[m\]\[\e[33m\]@\[\e[m\]\[\e[32m\]\h\[\e[m\]:\[\e[36m\]\w\[\e[m\]\[\e[32m\]]\[\e[m\]\[\e[32;47m\]\\$\[\e[m\] "
+# export PS1="$P_GREEN\u$P_RED@$P_YELLOW\h:$P_CYAN\w$P_BLUE\\$ $P_RESET"
+PS1='\[\033[1;36m\]\u\[\033[1;31m\]@\[\033[1;32m\]\h:\[\033[1;35m\]\w\[\033[1;31m\]\$\[\033[0m\] '
+
+
+
+# export PS1="\[\e[32m\][\[\e[m\]\[\e[31m\]\u\[\e[m\]\[\e[33m\]@\[\e[m\]\[\e[32m\]\h\[\e[m\]:\[\e[36m\]\w\[\e[m\]\[\e[32m\]]\[\e[m\]\[\e[32;47m\]\\$\[\e[m\] "
+
+# PS1='[\u@\h \W]\$ '
+#if [[ -r "/usr/share/pureline/pureline" ]]; then
+#    source /usr/share/pureline/pureline ~/.pureline.conf
+#fi
 . "$HOME/.cargo/env"
 
-
-# BEGIN_KITTY_SHELL_INTEGRATION
-#if test -n "$KITTY_INSTALLATION_DIR" -a -e "$KITTY_INSTALLATION_DIR/shell-integration/bash/kitty.bash"; then source "$KITTY_INSTALLATION_DIR/shell-integration/bash/kitty.bash"; fi
-# END_KITTY_SHELL_INTEGRATION

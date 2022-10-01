@@ -1,3 +1,6 @@
 nbtscan nbtscan 192.168.2.0/24 scan netbios names on lan
+
 nitrogen,feh  wallpaper
 
+#compile faster edit /etc/profile and add this line
+export MAKEFLAGS=${MAKEFLAGS:-"-j$(nproc)"} 

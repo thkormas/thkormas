@@ -4,3 +4,6 @@ nitrogen,feh  wallpaper
 
 #compile faster edit /etc/profile and add this line
 export MAKEFLAGS=${MAKEFLAGS:-"-j$(nproc)"} 
+disable laptop screen on boot video=LVDS-1:d 
+edit /etc/default/grub
+GRUB_CMDLINE_LINUX_DEFAULT="quiet splash video=LVDS-1:d"

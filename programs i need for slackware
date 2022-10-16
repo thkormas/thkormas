@@ -6,15 +6,13 @@ nitrogen,feh  wallpaper
 
 #compile faster edit /etc/profile and add this line
 export MAKEFLAGS=${MAKEFLAGS:-"-j$(nproc)"} 
+
 disable laptop screen on boot video=LVDS-1:d 
 edit /etc/default/grub
 GRUB_CMDLINE_LINUX_DEFAULT="quiet splash video=LVDS-1:d"
-
 sudo update-grub
 
 use deticated gpu 
 A suitable file for environment variable settings that affect the system as a whole (rather than just a particular user) is /etc/environment.
-
 This file is specifically meant for system-wide environment variable settings. It is not a script file, but rather consists of assignment expressions, one per line."
-
 So... Inserting your assignment DRI_PRIME=1 into /etc/environment and then restarting should do what you're asking.

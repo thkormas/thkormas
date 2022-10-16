@@ -1,5 +1,7 @@
 nbtscan nbtscan 192.168.2.0/24 scan netbios names on lan
 
+realtime sensors                     #      watch -n 1 -d sensors
+
 nitrogen,feh  wallpaper
 
 #compile faster edit /etc/profile and add this line

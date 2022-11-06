@@ -19,3 +19,8 @@ use deticated gpu
 A suitable file for environment variable settings that affect the system as a whole (rather than just a particular user) is /etc/environment.
 This file is specifically meant for system-wide environment variable settings. It is not a script file, but rather consists of assignment expressions, one per line."
 So... Inserting your assignment DRI_PRIME=1 into /etc/environment and then restarting should do what you're asking.
+
+make ssl key
+ssh-keygen -t rsa -b 4096 -o -a 100
+
+push to server ssh-copy-id tkor@ip-addressx.x.x.x
